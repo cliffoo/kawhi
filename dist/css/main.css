@@ -1,3 +1,24 @@
+.menu-btn {
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  transition: all 0.4s linear; }
+  .menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    margin-bottom: 5px;
+    background: #fff;
+    transition: all 0.4s linear; }
+  .menu-btn.hide {
+    transform: rotate(180deg); }
+    .menu-btn.hide .btn-line:nth-child(1) {
+      transform: rotate(45deg) translate(3px, 3px); }
+    .menu-btn.hide .btn-line:nth-child(2) {
+      display: none; }
+    .menu-btn.hide .btn-line:nth-child(3) {
+      transform: rotate(-45deg) translate(3px, -3px); }
+
 * {
   box-sizing: border-box;
   margin: 0; }
@@ -58,6 +79,7 @@ main {
       color: #eece1a; }
       main .icons a .logo-icon:hover {
         color: #fff;
+        cursor: pointer;
         transition: all 0.4s linear; }
   main#home {
     overflow: hidden; }
