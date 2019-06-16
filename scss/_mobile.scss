@@ -1,9 +1,16 @@
 // Widescreens
 @include mediaXl {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 // Desktops & laptops
 @include mediaLg {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .about-info {
     grid-template-areas:
       'bio-image'
@@ -17,6 +24,10 @@
 
 // Tablets & small laptops
 @include mediaMd {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   main {
     align-items: center;
     text-align: center;
@@ -58,4 +69,7 @@
 
 // Smart phones
 @include mediaSm {
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
