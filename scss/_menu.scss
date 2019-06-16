@@ -4,6 +4,7 @@
   position: absolute;
   right: 35px;
   top: 35px;
+  z-index: 100;
   cursor: pointer;
   @include linear;
 
@@ -34,5 +35,112 @@
         transform: rotate(-45deg) translate(3px, -3px);
       }
     }
+  }
+}
+
+// Menu overlay
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  // Nav side
+
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: rgba(darken($primary-color, 15), 0.85);
+    list-style: none;
+    @include linear;
+
+    // Push nav out of page
+    transform: translate3d(0, -100%, 0);
+
+    &.show {
+      // Slide nav into page
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  // Branding side
+
+  &-branding {
+    background: rgba($primary-color, 0.85);
+    @include linear;
+
+    // Push branding out of page (to top)
+    transform: translate3d(0, 100%, 0);
+
+    &.show {
+      // Slide branding into page
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portrait {
+      background-image: $portrait-image;
+      background-size: cover;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: solid 3px $secondary-color;
+    }
+  }
+
+  .nav-item {
+    // Push nav items out of page (to right)
+    transform: translate3d(600px, 0, 0);
+    @include linear;
+
+    &.show {
+      // Slide nav items into page
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.current > a {
+      color: $secondary-color;
+    }
+  }
+
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 0;
+    color: #fff;
+    @include linear;
+
+    &:hover {
+      color: $secondary-color;
+      cursor: pointer;
+      @include linear();
+    }
+  }
+}
+
+// Delay each nav item
+@for $i from 1 through 4 {
+  .nav-item:nth-child(#{$i}) {
+    transition-delay: $i * 0.1s;
   }
 }
