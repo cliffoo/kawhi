@@ -2,7 +2,7 @@ $primary-color: #444;
 $secondary-color: #eece1a;
 $home-image: url(../img/background.jpeg);
 $portrait-image: url('../img/portrait.jpg');
-$background-opacity: 0.6;
+$background-opacity: 0.85;
 $show-home-image: true;
 
 @mixin linear {
@@ -29,6 +29,16 @@ $show-home-image: true;
   }
 }
 
+// Dynamic text color
+
+@function set-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
 // Media query
 
 @mixin mediaSm {
@@ -44,13 +54,13 @@ $show-home-image: true;
 }
 
 @mixin mediaLg {
-  @media screen and (min-width: 769px) and (max-width: 1170px) {
+  @media screen and (max-width: 1000px) {
     @content;
   }
 }
 
 @mixin mediaXl {
-  @media screen and (min-width: 1171px) {
+  @media screen and (min-width: 1001px) {
     @content;
   }
 }
